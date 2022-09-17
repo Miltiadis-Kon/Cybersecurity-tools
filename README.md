@@ -18,8 +18,8 @@ A plethora of algorithms to automate basic cybersecurity tasks
     
     ### Explanation
     A method to sniff packets and forward user to a custom server when a specific DNS request is send.
-    DNS spoof works ONLY if you are the man in the middle.
-    ex. If users browses www.facebook.com, then redirect him to your apache server. 
+    DNS spoof works ONLY if you are the man in the middle..
+    (ex. If users browses www.facebook.com, then redirect him to your apache server.) 
     
     ### Complete use case
     1) Stalk user's behviour (find his/her favourite websites).
