@@ -3,7 +3,10 @@ A plethora of algorithms to automate basic cybersecurity tasks
 
 
 ## ARP SPOOFING.
-
+ ### Explanation
+ Used to become the man in the middle. 
+ Meaning that you pretend to be the target at the global network and monitor all his requests/responses. 
+ ### Basic Commands
 1) Pretend to be the router.
     A) arp-a --> see your interface and router IP.
     A) arpspoof -i eth0 -t (router ip ) (target ip) --> Update arp table to tell router that I am target
